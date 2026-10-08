@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://crvjggsa16715"]
 
+[ext_resource type="Script" uid="uid://bt4dtvpxguyof" path="res://Scene/main.gd" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://1ru0ualudyek" path="res://Scene/player.tscn" id="1_f6udf"]
 [ext_resource type="Script" uid="uid://cwmxceggimqpt" path="res://Scene/pickup.gd" id="2_r34rm"]
 [ext_resource type="Texture2D" uid="uid://bwgcaqfr8ix2h" path="res://icon.svg" id="2_sblpm"]
@@ -11,6 +12,7 @@ size = Vector2(80, 300)
 radius = 20.0
 
 [node name="Main" type="Node2D" unique_id=174346629]
+script = ExtResource("1_2wwxx")
 
 [node name="Player" parent="." unique_id=200678208 instance=ExtResource("1_f6udf")]
 position = Vector2(200, 200)
@@ -22,7 +24,7 @@ position = Vector2(500, 250)
 shape = SubResource("RectangleShape2D_podue")
 
 [node name="Pickup" type="Area2D" parent="." unique_id=541003986]
-position = Vector2(350, 200)
+position = Vector2(350, 100)
 script = ExtResource("2_r34rm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pickup" unique_id=732398994]
@@ -32,4 +34,41 @@ texture = ExtResource("2_sblpm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup" unique_id=2036528771]
 shape = SubResource("CircleShape2D_gmpva")
 
+[node name="Pickup2" type="Area2D" parent="." unique_id=1462582374]
+position = Vector2(350, 250)
+script = ExtResource("2_r34rm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pickup2" unique_id=2097816772]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_sblpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup2" unique_id=307927510]
+shape = SubResource("CircleShape2D_gmpva")
+
+[node name="Pickup3" type="Area2D" parent="." unique_id=552128252]
+position = Vector2(350, 400)
+script = ExtResource("2_r34rm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pickup3" unique_id=1975361255]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_sblpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup3" unique_id=117480990]
+shape = SubResource("CircleShape2D_gmpva")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1369468099]
+
+[node name="CountLabel" type="Label" parent="HUD" unique_id=1956206086]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 78.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 24
+text = "拾取：0"
+
 [connection signal="body_entered" from="Pickup" to="Pickup" method="_on_body_entered"]
+[connection signal="collected" from="Pickup" to="." method="_on_pickup_collected"]
+[connection signal="body_entered" from="Pickup2" to="Pickup2" method="_on_body_entered"]
+[connection signal="collected" from="Pickup2" to="." method="_on_pickup_collected"]
+[connection signal="body_entered" from="Pickup3" to="Pickup3" method="_on_body_entered"]
+[connection signal="collected" from="Pickup3" to="." method="_on_pickup_collected"]
