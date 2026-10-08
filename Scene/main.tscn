@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://crvjggsa16715"]
 
 [ext_resource type="PackedScene" uid="uid://1ru0ualudyek" path="res://Scene/player.tscn" id="1_f6udf"]
+[ext_resource type="Script" uid="uid://cwmxceggimqpt" path="res://Scene/pickup.gd" id="2_r34rm"]
+[ext_resource type="Texture2D" uid="uid://bwgcaqfr8ix2h" path="res://icon.svg" id="2_sblpm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_podue"]
 size = Vector2(80, 300)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmpva"]
+radius = 20.0
 
 [node name="Main" type="Node2D" unique_id=174346629]
 
@@ -15,3 +20,16 @@ position = Vector2(500, 250)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1614075212]
 shape = SubResource("RectangleShape2D_podue")
+
+[node name="Pickup" type="Area2D" parent="." unique_id=541003986]
+position = Vector2(350, 200)
+script = ExtResource("2_r34rm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pickup" unique_id=732398994]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_sblpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup" unique_id=2036528771]
+shape = SubResource("CircleShape2D_gmpva")
+
+[connection signal="body_entered" from="Pickup" to="Pickup" method="_on_body_entered"]
