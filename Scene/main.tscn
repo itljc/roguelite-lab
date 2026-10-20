@@ -15,7 +15,7 @@ radius = 20.0
 script = ExtResource("1_2wwxx")
 
 [node name="Player" parent="." unique_id=200678208 instance=ExtResource("1_f6udf")]
-position = Vector2(200, 200)
+position = Vector2(222, 204)
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=664013988]
 position = Vector2(500, 250)
@@ -66,9 +66,28 @@ offset_bottom = 43.0
 theme_override_font_sizes/font_size = 24
 text = "拾取：0"
 
+[node name="FinishLabel" type="Label" parent="HUD" unique_id=1767265708]
+visible = false
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 84.0
+offset_bottom = 83.0
+theme_override_font_sizes/font_size = 28
+text = "收集完成"
+
+[node name="RestartButton" type="Button" parent="HUD" unique_id=730429637]
+visible = false
+offset_left = 20.0
+offset_top = 110.0
+offset_right = 92.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 28
+text = "重新开始"
+
 [connection signal="body_entered" from="Pickup" to="Pickup" method="_on_body_entered"]
 [connection signal="collected" from="Pickup" to="." method="_on_pickup_collected"]
 [connection signal="body_entered" from="Pickup2" to="Pickup2" method="_on_body_entered"]
 [connection signal="collected" from="Pickup2" to="." method="_on_pickup_collected"]
 [connection signal="body_entered" from="Pickup3" to="Pickup3" method="_on_body_entered"]
 [connection signal="collected" from="Pickup3" to="." method="_on_pickup_collected"]
+[connection signal="pressed" from="HUD/RestartButton" to="." method="_on_restart_button_pressed"]
