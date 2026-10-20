@@ -84,6 +84,13 @@ offset_bottom = 141.0
 theme_override_font_sizes/font_size = 28
 text = "重新开始"
 
+[node name="TimeLabel" type="Label" parent="HUD" unique_id=1785553812]
+offset_left = 170.0
+offset_top = 26.0
+offset_right = 271.0
+offset_bottom = 49.0
+text = "用时：0.00 秒"
+
 [connection signal="body_entered" from="Pickup" to="Pickup" method="_on_body_entered"]
 [connection signal="collected" from="Pickup" to="." method="_on_pickup_collected"]
 [connection signal="body_entered" from="Pickup2" to="Pickup2" method="_on_body_entered"]
