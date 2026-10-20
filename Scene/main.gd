@@ -5,6 +5,7 @@ var pickup_count := 0
 @onready var count_label: Label = $HUD/CountLabel
 @onready var finish_label: Label = $HUD/FinishLabel
 @onready var restart_button: Button = $HUD/RestartButton
+@onready var player: CharacterBody2D = $Player
 
 func _ready() -> void:
 	count_label.text = "拾取：" + str(pickup_count)
@@ -15,6 +16,8 @@ func _on_pickup_collected() -> void:
 	if pickup_count >= 3:
 		finish_label.show()
 		restart_button.show()
+		player.set_physics_process(false)
+		player.velocity = Vector2.ZERO
 
 
 func _on_restart_button_pressed() -> void:
