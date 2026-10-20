@@ -23,7 +23,7 @@ position = Vector2(500, 250)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1614075212]
 shape = SubResource("RectangleShape2D_podue")
 
-[node name="Pickup" type="Area2D" parent="." unique_id=541003986]
+[node name="Pickup" type="Area2D" parent="." unique_id=541003986 groups=["pickups"]]
 position = Vector2(350, 100)
 script = ExtResource("2_r34rm")
 
@@ -34,7 +34,7 @@ texture = ExtResource("2_sblpm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup" unique_id=2036528771]
 shape = SubResource("CircleShape2D_gmpva")
 
-[node name="Pickup2" type="Area2D" parent="." unique_id=1462582374]
+[node name="Pickup2" type="Area2D" parent="." unique_id=1462582374 groups=["pickups"]]
 position = Vector2(350, 250)
 script = ExtResource("2_r34rm")
 
@@ -45,7 +45,7 @@ texture = ExtResource("2_sblpm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup2" unique_id=307927510]
 shape = SubResource("CircleShape2D_gmpva")
 
-[node name="Pickup3" type="Area2D" parent="." unique_id=552128252]
+[node name="Pickup3" type="Area2D" parent="." unique_id=552128252 groups=["pickups"]]
 position = Vector2(350, 400)
 script = ExtResource("2_r34rm")
 
@@ -54,6 +54,17 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_sblpm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup3" unique_id=117480990]
+shape = SubResource("CircleShape2D_gmpva")
+
+[node name="Pickup4" type="Area2D" parent="." unique_id=245677868 groups=["pickups"]]
+position = Vector2(350, 600)
+script = ExtResource("2_r34rm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pickup4" unique_id=977167114]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_sblpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup4" unique_id=875762794]
 shape = SubResource("CircleShape2D_gmpva")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1369468099]
@@ -97,4 +108,6 @@ text = "用时：0.00 秒"
 [connection signal="collected" from="Pickup2" to="." method="_on_pickup_collected"]
 [connection signal="body_entered" from="Pickup3" to="Pickup3" method="_on_body_entered"]
 [connection signal="collected" from="Pickup3" to="." method="_on_pickup_collected"]
+[connection signal="body_entered" from="Pickup4" to="Pickup4" method="_on_body_entered"]
+[connection signal="collected" from="Pickup4" to="." method="_on_pickup_collected"]
 [connection signal="pressed" from="HUD/RestartButton" to="." method="_on_restart_button_pressed"]

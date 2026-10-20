@@ -1,5 +1,6 @@
 extends Node2D
 
+var total_pickups: int = 0
 var pickup_count := 0
 var elapsed_time: float = 0.0
 var is_finished: bool = false
@@ -11,7 +12,8 @@ var is_finished: bool = false
 @onready var time_label: Label = $HUD/TimeLabel
 
 func _ready() -> void:
-	count_label.text = "拾取：" + str(pickup_count)
+	total_pickups = get_tree().get_nodes_in_group("pickups").size()
+	count_label.text = "拾取：%d / %d" % [pickup_count, total_pickups]
 
 func _process(delta: float) -> void:
 	if is_finished:
@@ -21,8 +23,8 @@ func _process(delta: float) -> void:
 	
 func _on_pickup_collected() -> void:
 	pickup_count += 1
-	count_label.text = "拾取：" + str(pickup_count)
-	if pickup_count >= 3:
+	count_label.text = "拾取：%d / %d" % [pickup_count, total_pickups]
+	if total_pickups > 0 and pickup_count >= total_pickups:
 		is_finished = true
 		finish_label.show()
 		restart_button.show()
