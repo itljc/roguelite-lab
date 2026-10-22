@@ -17,6 +17,7 @@ position = Vector2(222, 204)
 position = Vector2(500, 250)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1614075212]
+position = Vector2(349, -35)
 shape = SubResource("RectangleShape2D_podue")
 
 [node name="Pickup" parent="." unique_id=1108200899 instance=ExtResource("3_3amdw")]
@@ -30,6 +31,9 @@ position = Vector2(350, 400)
 
 [node name="Pickup4" parent="." unique_id=956558164 instance=ExtResource("3_3amdw")]
 position = Vector2(350, 600)
+
+[node name="Pickup5" parent="." unique_id=626629114 instance=ExtResource("3_3amdw")]
+position = Vector2(350, 508)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1369468099]
 

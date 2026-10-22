@@ -13,6 +13,9 @@ var is_finished: bool = false
 
 func _ready() -> void:
 	total_pickups = get_tree().get_nodes_in_group("pickups").size()
+	for pickup in get_tree().get_nodes_in_group("pickups"):
+		if not pickup.is_connected("collected", _on_pickup_collected):
+			pickup.connect("collected", _on_pickup_collected)
 	count_label.text = "拾取：%d / %d" % [pickup_count, total_pickups]
 
 func _process(delta: float) -> void:
